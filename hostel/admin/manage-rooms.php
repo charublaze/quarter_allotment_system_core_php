@@ -6,7 +6,7 @@ check_login();
 
 if (isset($_GET['del'])) {
     $id = intval($_GET['del']);
-    $adn = "delete from rooms where id=?";
+    $adn = "delete from rooms where qid=?";
     $stmt = $mysqli->prepare($adn);
     $stmt->bind_param('i', $id);
     $stmt->execute();
@@ -98,7 +98,7 @@ if (isset($_GET['del'])) {
                                                     </td>
                                                     <!--<td><?php echo $row->posting_date; ?></td>-->
                                                     <td><a href="edit-room.php?id=<?= $row->qid; ?>"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;
-                                                        <a href="manage-rooms.php?del=<?= $row->qid; ?>" onclick="return confirm("Do you want to delete");"><i class="fa fa-close"></i></a></td>
+                                                        <a href="manage-rooms.php?del=<?= $row->qid; ?>" onclick="return confirm('Do you want to delete');"><i class="fa fa-close"></i></a></td>
                                                 </tr>
                                                 <?php
                                                 $cnt = $cnt + 1;
