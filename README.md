@@ -1,2 +1,2 @@
-# quarter allotment system
+# Quarter Allotment System
 Quarter Allotment System
