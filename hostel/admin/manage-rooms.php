@@ -72,7 +72,7 @@ if (isset($_GET['del'])) {
                                         <tbody>
                                             <?php
                                             $aid = $_SESSION['id'];
-                                            $ret = "SELECT R.qid, R.type, R.q_no, A.status FROM rooms R LEFT JOIN allotment A ON R.qid=A.qid ORDER BY R.q_no";
+                                            $ret = "SELECT R.qid, R.type, R.q_no, R.status FROM rooms R ORDER BY R.q_no";
                                             $stmt = $mysqli->prepare($ret);
 //$stmt->bind_param('i',$aid);
                                             $stmt->execute(); //ok
@@ -84,9 +84,9 @@ if (isset($_GET['del'])) {
                                                 echo "</pre>";
                                                 ?>
                                                 <tr>
-                                                    <td><?php echo $cnt; ?></td>
-                                                    <td>A</td>
-                                                    <td><?php echo $row->q_no; ?></td>
+                                                    <td><?= $cnt; ?></td>
+                                                    <td><?= $row->type ?></td>
+                                                    <td><?= $row->q_no; ?></td>
                                                     <td>
                                                         <?php
                                                         switch ($row->status) {
@@ -97,8 +97,8 @@ if (isset($_GET['del'])) {
                                                         ?>
                                                     </td>
                                                     <!--<td><?php echo $row->posting_date; ?></td>-->
-                                                    <td><a href="edit-room.php?id=<?php echo $row->qid; ?>"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;
-                                                        <a href="manage-rooms.php?del=<?php echo $row->qid; ?>" onclick="return confirm("Do you want to delete");"><i class="fa fa-close"></i></a></td>
+                                                    <td><a href="edit-room.php?id=<?= $row->qid; ?>"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;
+                                                        <a href="manage-rooms.php?del=<?= $row->qid; ?>" onclick="return confirm("Do you want to delete");"><i class="fa fa-close"></i></a></td>
                                                 </tr>
                                                 <?php
                                                 $cnt = $cnt + 1;
