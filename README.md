@@ -1,2 +1,2 @@
-# quarter_allotment_system
+# quarter allotment system
 Quarter Allotment System
